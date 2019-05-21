@@ -1,5 +1,6 @@
 package edu.handong.analysis;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +19,9 @@ public class HGUCoursePatternAnalyzer {
 	 * This method runs our analysis logic to save the number courses taken by each student per semester in a result file.
 	 * Run method must not be changed!!
 	 * @param args
+	 * @throws IOException 
 	 */
-	public void run(String[] args) {
+	public void run(String[] args)  {
 		
 		try {
 			// when there are not enough arguments from CLI, it throws the NotEnoughArgmentException which must be defined by you.
@@ -33,17 +35,17 @@ public class HGUCoursePatternAnalyzer {
 		String dataPath = args[0]; // csv file to be analyzed
 		String resultPath = args[1]; // the file path where the results are saved.
 		ArrayList<String> lines = Utils.getLines(dataPath, true);
-		
+		System.out.println(lines.get(0));///////////////delete
 		students = loadStudentCourseRecords(lines);
 		
 		// To sort HashMap entries by key values so that we can save the results by student ids in ascending order.
-		Map<String, Student> sortedStudents = new TreeMap<String,Student>(students); 
+		//Map<String, Student> sortedStudents = new TreeMap<String,Student>(students); 
 		
 		// Generate result lines to be saved.
-		ArrayList<String> linesToBeSaved = countNumberOfCoursesTakenInEachSemester(sortedStudents);
+		//ArrayList<String> linesToBeSaved = countNumberOfCoursesTakenInEachSemester(sortedStudents);
 		
 		// Write a file (named like the value of resultPath) with linesTobeSaved.
-		Utils.writeAFile(linesToBeSaved, resultPath);
+		//Utils.writeAFile(linesToBeSaved, resultPath);
 	}
 	
 	/**
@@ -55,6 +57,97 @@ public class HGUCoursePatternAnalyzer {
 	private HashMap<String,Student> loadStudentCourseRecords(ArrayList<String> lines) {
 		
 		// TODO: Implement this method
+		int size = 1, temp = 1, sidexist = 1, c = 0;
+		//ArrayList<Student> students = new ArrayList<Student>();
+		for(int i = 0; i < lines.size(); i++) {
+			temp = Integer.parseInt(lines.get(i).split(", ")[0]);
+			if(temp > size) {
+				size = temp;
+			}
+		}//
+		
+		
+		ArrayList<Course> courses = new ArrayList<Course>();
+		Student[]students = new Student[size];
+		
+		temp = 0;
+//		for(int i = 0; i < lines.size(); i++) {
+//			courses.add(new Course(lines.get(i)));
+//		}//works
+	
+		System.out.println(size);
+		for(int i = 0; i < lines.size(); i++) {
+			if(i == 0) {
+				students[i] = new Student(lines.get(i).split(", ")[0]);
+				temp = Integer.parseInt(lines.get(i).split(", ")[0]);
+			}
+			sidexist = Integer.parseInt(lines.get(i).split(", ")[0]);
+			courses.add(new Course(lines.get(i)));
+			
+			if(temp == sidexist) {
+				students[temp - 1].addCourse(courses.get(i));
+				continue;
+			} else {
+			students[sidexist - 1] = new Student(lines.get(i).split(", ")[0]);
+			students[sidexist - 1].addCourse(courses.get(i));
+			temp = sidexist;
+			}
+		}
+		
+//		int delete = Integer.parseInt(students[0].getStudentId());
+//		
+//		while(delete == 1) {
+//			try {
+//			System.out.println(students[0].getCoursesTaken().get(c).getcourseName());
+//			c++;
+//			}catch (IndexOutOfBoundsException e){
+//				System.out.println("reached the end");
+//				break;
+//			}
+//			
+//		}
+//		System.out.println("된다 돼 ㅠㅠㅠㅠ");
+//		for(c = 0; students[0].getCoursesTaken().get(c) != null; c++)
+//		System.out.println(students[0].getCoursesTaken().get(c).getcourseName());
+		
+		//int studentid = 1;
+		
+		for(int i = 0; i < lines.size(); i++) {
+		//Course crs = new Course(lines.get(i));
+		//int j = i + 1;
+//		System.out.println(lines.get(i).split(", ")[0]);
+		//students.add(new Student(lines.get(i).split(", ")[0]));
+		//students.add(i,new Student(lines.get(i).split(", ")[0]));
+		
+		
+//		int k = Integer.parseInt(lines.get(i).split(", ")[0]);
+//		int j = 0;
+//		while(courses.get(j).getstudentId() != k) {
+//			students.get(i).addCourse(courses.get(j));
+//			j++;
+//		}
+		
+		
+//		for(int x = 0; x < 60; x++) {
+//			System.out.println(students.get(0).getArrayListCourse().get(0));
+//		}
+//		students = new HashMap<String, Student>();
+//		String year = lines.get(i).split(", ")[7];
+//		String semester = lines.get(i).split(", ")[8];
+//		String key = year + "-" + semester;		
+//		System.out.println(key);
+		}
+		
+//		for(int i = 0; i < students.size(); i++)
+//		{
+//			
+//			System.out.println(students.get(i).getStudentId());
+//			
+//			
+//		}
+		
+		
+//		System.out.println((students.get(0).getArrayListCourse()).size());
 		
 		return null; // do not forget to return a proper variable.
 	}
