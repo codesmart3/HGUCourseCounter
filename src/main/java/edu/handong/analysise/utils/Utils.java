@@ -61,8 +61,18 @@ public class Utils {
 		
 		boolean created = false;
 		
-		try {
+//		if(!new File(targetFileName).exists()) {
+//			try {
+//				throw new FileNotFoundException("Given path not found. :(");
+//			} catch (FileNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				System.out.println(e);
+//				System.exit(0);
+//			}
+//		} 
 		
+		
+		try {
 		boolean exist = resultFile.exists();
 		if(exist) {
 			System.out.println("Error creating File. File with same name already exists.");
@@ -84,10 +94,6 @@ public class Utils {
 			System.exit(0);
 		}
 		
-		
-
-		
-		System.out.println("@");
 		int i = 0;
 		
 			try {
@@ -110,7 +116,7 @@ public class Utils {
 		}
 		
 		System.out.printf("These lines are printed to: %s", lines);
-	}
+	} 
 	
 	
 }

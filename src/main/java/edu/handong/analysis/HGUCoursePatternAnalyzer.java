@@ -121,16 +121,12 @@ public class HGUCoursePatternAnalyzer {
 		
 		// TODO: Implement this method
 		HashMap<String, Integer> temporary = new HashMap<String, Integer>();
-//		ArrayList<Entry<String, Integer>> arrlist;
 		ArrayList<String> arr = new ArrayList<String>();
 		String header = "StudentID" + "," + "TotalNumberOfSemestersRegistered" + "," + "Semester" + "," + "NumCoursesTakenInTheSemester" + "\n";
 		header.replace("[","");
 		arr.add(header);
 		
-		
-//		Map<String, Integer> tmp = new TreeMap<String, Integer>(temporary);
-
-		
+	
 		int semsTakenInNthSem;
 		int finalCoursesTaken = 0;
 		Iterator<String> itr = sortedStudents.keySet().iterator();

@@ -5,10 +5,7 @@ public class Student {
 	private String studentId;
 	private ArrayList<Course>coursesTaken;
 	private HashMap<String, Integer> semestersByYearAndSemester;
-			//key: Year-Semester
-			//e.g., 2003-1,
-	
-	
+
 	public Student(String studentId) {
 		this.studentId = studentId;
 		coursesTaken = new ArrayList<Course>();
@@ -54,7 +51,6 @@ public class Student {
 		int nthsem = 1;
 		String temp = coursesTaken.get(0).getyearTaken() + "-" + coursesTaken.get(0).getsemesterCourseTaken();
 		semestersByYearAndSemester = new HashMap<String, Integer>();
-		//ArrayList <Integer> temp_int = new ArrayList<Integer>();
 		
 		for(int i = 0; i < coursesTaken.size(); i++) {
 			if(i == 0) {
@@ -69,8 +65,6 @@ public class Student {
 				temp = key;
 				nthsem++;
 				semestersByYearAndSemester.put(key, nthsem);
-				
-			
 			}	
 		}
 		
@@ -121,8 +115,7 @@ public class Student {
 			}
 			
 		}
-		
-//		System.out.println(totaltaken);
+
 		return totaltaken;
 		
 	}
