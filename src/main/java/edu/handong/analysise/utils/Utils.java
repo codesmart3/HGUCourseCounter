@@ -110,7 +110,7 @@ public class Utils {
 			System.exit(0);
 		}
 		
-		System.out.printf("These lines are printed to: %s", lines);
+		//System.out.printf("These lines are printed to: %s", lines);
 	} 
 	
 	
