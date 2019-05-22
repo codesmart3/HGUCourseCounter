@@ -18,9 +18,7 @@ public class Utils {
 	
 	public static ArrayList<String> getLines(String file, boolean removeHeader) {
 		ArrayList<String> lines = new ArrayList<>();
-//		Path dataPath = Paths.get(file);
 		try {
-			//boolean exist = dir.exists();
 			boolean pathExist = new File(file).exists();
 			if(!pathExist)
 				throw new NotEnoughArgumentException("The file path does not exist. Please check your CLI argument!");
@@ -54,11 +52,8 @@ public class Utils {
 	public static void writeAFile(ArrayList<String> lines, String targetFileName) {
 		
 		
-
-//		PrintWriter outputStream = null;
-		
 		File resultFile = new File(targetFileName);
-		
+		resultFile.getParentFile().mkdirs();
 		boolean created = false;
 		
 //		if(!new File(targetFileName).exists()) {
