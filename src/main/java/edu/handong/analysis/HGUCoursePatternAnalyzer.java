@@ -101,33 +101,6 @@ public class HGUCoursePatternAnalyzer {
 		}
 		
 		
-//	int delete = Integer.parseInt(studentsarr[0].getStudentId()); c = 0;
-//		
-//		while(delete == 1) {
-//			try {
-//			System.out.println(studentsarr[0].getCoursesTaken().get(c).getcourseName());
-//			c++;
-//			}catch (IndexOutOfBoundsException e){
-//				System.out.println("reached the end");
-//				break;
-//			}
-//			
-//		}
-//		System.out.println("된다 돼 ㅠㅠㅠㅠ");
-
-		
-//		for(int x = 0; x < 60; x++) {
-//			System.out.println(students.get(0).getArrayListCourse().get(0));
-//		}
-//		students = new HashMap<String, Student>();
-//		String year = lines.get(i).split(", ")[7];
-//		String semester = lines.get(i).split(", ")[8];
-//		String key = year + "-" + semester;		
-//		System.out.println(key);
-		
-			
-//		System.out.println((students.get(0).getArrayListCourse()).size());
-		
 		return students; // do not forget to return a proper variable.
 	}
 
@@ -155,33 +128,8 @@ public class HGUCoursePatternAnalyzer {
 		arr.add(header);
 		
 		
-		Map<String, Integer> tmp = new TreeMap<String, Integer>(temporary);
+//		Map<String, Integer> tmp = new TreeMap<String, Integer>(temporary);
 
-//			
-//			while(itr1.hasNext()) {
-//				String key1 = itr1.next();
-//				int value = sorted.get(key1);
-//				String insert = key + "-" + value;
-//				arr.add(insert);
-//				
-//			}
-			
-//			Set<Entry<String, Integer>> tempSet = temporary.entrySet();
-//			arrlist = new ArrayList<Entry<String, Integer>>(tempSet);
-//		}
-		
-		
-		
-		
-		
-		//System.out.println(sortedStudents.get("0002").getCoursesTaken().get(3).getcourseName());
-//		
-//		for(int z = 0; z < arr.size(); z++) {
-//			System.out.println(arr.get(z));
-//		}
-		
-		
-//		System.out.println(tmp);
 		
 		int semsTakenInNthSem;
 		int finalCoursesTaken = 0;
@@ -201,22 +149,8 @@ public class HGUCoursePatternAnalyzer {
 				}
 				arr.add(line);
 			}
-//			Map<String, Integer> sorted = new TreeMap<String, Integer>(temporary);
-//			Iterator<String> itr1 = sorted.keySet().iterator();
-//			System.out.println(finalCoursesTaken);
 			
-		}
-		
-		
-		
-//		
-//		for(String s : arr)
-//			System.out.println(s);
-		
-		
-		
-		
-		
+		}		
 		return arr; // do not forget to return a proper variable.
 	}
 }

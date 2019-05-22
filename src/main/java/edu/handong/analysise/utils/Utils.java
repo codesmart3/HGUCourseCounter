@@ -54,32 +54,13 @@ public class Utils {
 	public static void writeAFile(ArrayList<String> lines, String targetFileName) {
 		
 		
-		//Path givenPath = Paths.get(targetFileName);
-		
-		//File dir = new File(targetFileName);
-		//dir.mkdirs();
-		//String fileName = "hw5result11";
-		PrintWriter outputStream = null;
-//
+
+//		PrintWriter outputStream = null;
 		
 		File resultFile = new File(targetFileName);
-//		
-//		try {
-//			resultFile.createNewFile();
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
 		
-//			//boolean exist = dir.exists();
-		
-		System.out.println("1");
-
 		boolean created = false;
 		
-//		File newFile = new File(dir + File.separator + fileName);
-		
-				
 		try {
 		
 		boolean exist = resultFile.exists();
