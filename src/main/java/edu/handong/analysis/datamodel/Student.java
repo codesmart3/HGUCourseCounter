@@ -1,10 +1,13 @@
 package edu.handong.analysis.datamodel;
 import java.util.*;
 
+import edu.handong.analysis.HGUCoursePatternAnalyzer;
+
 public class Student {
 	private String studentId;
 	private ArrayList<Course>coursesTaken;
 	private HashMap<String, Integer> semestersByYearAndSemester;
+	private int totalSemsTaken; 
 
 	public Student(String studentId) {
 		this.studentId = studentId;
@@ -18,14 +21,18 @@ public class Student {
 	public int totalSemesterTaken() {
 		
 		String key = null;
+		int syear = Integer.parseInt(HGUCoursePatternAnalyzer.startyear);
+		int eyear = Integer.parseInt(HGUCoursePatternAnalyzer.endyear);
 		int year;
 		int semesterTaken;
 		int nthsem = 1;
+		
 		String temp = coursesTaken.get(0).getyearTaken() + "-" + coursesTaken.get(0).getsemesterCourseTaken();
 		semestersByYearAndSemester = new HashMap<String, Integer>();
-		//ArrayList <Integer> temp_int = new ArrayList<Integer>();
 		
 		for(int i = 0; i < coursesTaken.size(); i++) {
+			if(coursesTaken.get(i).getyearTaken() < syear || coursesTaken.get(i).getyearTaken() > eyear)
+				continue;
 			if(i == 0) {
 				semestersByYearAndSemester.put(temp, nthsem);
 			}
@@ -41,18 +48,25 @@ public class Student {
 			
 			}	
 		}
+		
 		return nthsem;
 	}
 	
 	public HashMap<String, Integer> getSemestersByYearAndSemester(){
 		String key = null;
+		int syear = Integer.parseInt(HGUCoursePatternAnalyzer.startyear);
+		int eyear = Integer.parseInt(HGUCoursePatternAnalyzer.endyear);
 		int year;
 		int semesterTaken;
 		int nthsem = 1;
 		String temp = coursesTaken.get(0).getyearTaken() + "-" + coursesTaken.get(0).getsemesterCourseTaken();
 		semestersByYearAndSemester = new HashMap<String, Integer>();
 		
+		
+		
 		for(int i = 0; i < coursesTaken.size(); i++) {
+			if(coursesTaken.get(i).getyearTaken() < syear || coursesTaken.get(i).getyearTaken() > eyear)
+				continue;
 			if(i == 0) {
 				semestersByYearAndSemester.put(temp, nthsem);
 			}
@@ -126,6 +140,67 @@ public class Student {
 	
 	public String getStudentId() {
 		return studentId;
+	}
+	
+	public String ratioForGivenCourse(String Course, String year) {
+		int valSemester;
+		int valYear;
+		String yearAndSem, temp = null;
+		String givenCourse = Course, givenYear = year;
+		int countYears = 1;
+		int countYearsWithCourse;
+		float ratio;
+		
+		for(Course countCourse:coursesTaken) {
+			valYear = countCourse.getyearTaken();
+			valSemester = countCourse.getsemesterCourseTaken();
+			yearAndSem = valYear + "-" + valSemester;
+			if(temp.contentEquals(yearAndSem)) {
+				countYears++;
+				continue;
+			}else {
+			temp = yearAndSem;
+			System.out.println(yearAndSem);
+			}
+		}
+		
+		
+		return null;
+	}
+	
+	public int getTotalSemsTaken() {
+		totalSemsTaken = 0;
+		int year;
+		int semesterTaken;
+		int nthsem = 1;
+		String temp = coursesTaken.get(0).getyearTaken() + "-" + coursesTaken.get(0).getsemesterCourseTaken();
+		ArrayList<String> checkForDuplicate = new ArrayList<String>();
+		String toGetTheTotalSemsTaken = temp;
+		
+		for(int i = 0; i < coursesTaken.size(); i++) {
+			year = coursesTaken.get(i).getyearTaken();
+			semesterTaken = coursesTaken.get(i).getsemesterCourseTaken();
+			toGetTheTotalSemsTaken = year + "-" + semesterTaken;
+		
+		if(i == 0) {
+			String compareWithExistingSems;
+			year = coursesTaken.get(i).getyearTaken();
+			semesterTaken = coursesTaken.get(i).getsemesterCourseTaken();
+			compareWithExistingSems = year + "-" + semesterTaken;
+			checkForDuplicate.add(compareWithExistingSems);
+			totalSemsTaken++;
+		}else {
+				if(!checkForDuplicate.contains(toGetTheTotalSemsTaken)) {
+					checkForDuplicate.add(toGetTheTotalSemsTaken);
+					totalSemsTaken++;
+				
+				}
+			}
+		}
+		
+		
+		return totalSemsTaken;
+	
 	}
 	
 }
