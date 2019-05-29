@@ -217,8 +217,8 @@ public class HGUCoursePatternAnalyzer {
 			students.put(key, studentsarr[c]);
 		}
 		
-		
 /* Getting ratio for hw6*/		
+
 
 		int checkForCourseCode = Integer.parseInt(analysis);
 		
@@ -229,13 +229,22 @@ public class HGUCoursePatternAnalyzer {
 		
 		String givenCourse = coursecode;
 		
+		
+		/*Incase user inputs wrong course code*/
 		for(Course crs:courses) {
 			if(crs.getCourseCode().contentEquals(givenCourse)) {
 				takenGivenCourse.add(crs);
 			}
 		}
 		
-		String courseName = takenGivenCourse.get(0).getcourseName();
+		String courseName = null;
+		
+		try {
+		courseName = takenGivenCourse.get(0).getcourseName();
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Given course code does not exist. The program will exit.");
+			System.exit(0);
+		}
 		
 		
 		Collections.sort(takenGivenCourse, Course.yearComparator);
