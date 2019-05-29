@@ -59,9 +59,6 @@ public class HGUCoursePatternAnalyzer {
 			}
 		}
 		
-		System.out.println(coursecode);
-		
-		
 		String dataPath = input; // csv file to be analyzed
 		String resultPath = output; // the file path where the results are saved.
 		
@@ -173,7 +170,6 @@ public class HGUCoursePatternAnalyzer {
 		String header = "HGU Course Analyzer";
 		String footer ="";
 		formatter.printHelp("HGUCourseCounter", header, options, footer, true);
-		
 		//System.out.println(help);
 	}
 	
@@ -376,7 +372,7 @@ public class HGUCoursePatternAnalyzer {
 		// TODO: Implement this method
 		HashMap<String, Integer> temporary = new HashMap<String, Integer>();
 		ArrayList<String> arr = new ArrayList<String>();
-		String header = "StudentID" + "," + "TotalNumberOfSemestersRegistered" + "," + "Semester" + "," + "NumCoursesTakenInTheSemester" + "\n";
+		String header = "StudentID" + ", " + "TotalNumberOfSemestersRegistered" + ", " + "Semester" + ", " + "NumCoursesTakenInTheSemester" + "\n";
 		header.replace("[","");
 		arr.add(header);
 		
