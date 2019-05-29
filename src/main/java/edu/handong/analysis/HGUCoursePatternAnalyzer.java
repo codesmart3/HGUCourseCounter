@@ -50,9 +50,17 @@ public class HGUCoursePatternAnalyzer {
 				System.exit(0);
 				return;
 			}
-			
-			
 		}
+		
+		if(parseOptions(options, args)) {
+			if(analysis.contentEquals("2") && coursecode == null) {
+				printHelp(options);
+				System.exit(0);
+			}
+		}
+		
+		System.out.println(coursecode);
+		
 		
 		String dataPath = input; // csv file to be analyzed
 		String resultPath = output; // the file path where the results are saved.
