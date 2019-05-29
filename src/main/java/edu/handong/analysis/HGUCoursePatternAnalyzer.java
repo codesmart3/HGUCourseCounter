@@ -100,9 +100,7 @@ public class HGUCoursePatternAnalyzer {
 
 		} catch (Exception e) {
 			printHelp(options);
-			//System.out.println("You did not meet the requirements for the inputs. Read the Help carefully");
 			System.exit(0);
-			//return false;
 		}
 
 		return true;
@@ -177,8 +175,6 @@ public class HGUCoursePatternAnalyzer {
 		int size = 1, temp = 1, sidexist = 1, c = 0;
 		String key;
 		
-		//ArrayList<Student> students = new ArrayList<Student>();
-		
 		for(CSVRecord line : lines) {
 			Course oneCourse = new Course(line);
 			temp = oneCourse.getstudentId();
@@ -228,8 +224,6 @@ public class HGUCoursePatternAnalyzer {
 		HashMap<String, Integer> numOfStudentsInGivenYear = new HashMap<String, Integer>();
 		
 		String givenCourse = coursecode;
-		
-		System.out.println("Processing ratio calculation");
 		
 		for(Course crs:courses) {
 			if(crs.getCourseCode().contentEquals(givenCourse)) {
@@ -332,7 +326,6 @@ public class HGUCoursePatternAnalyzer {
 			numOfStudentsForAllYears = numberOfCoursesInGivenYearSem.get(selectYearSemForGivenCourse);
 			ratio = ((float)numOfStudentsForAllYears / numOfStudentsForGivenCourse) * 100;
 			stringRatio = String.format("%.1f", ratio) + "%";
-			//System.out.println(stringRatio);
 			year = selectYearSemForGivenCourse.split("-")[0];
 			semester = selectYearSemForGivenCourse.split("-")[1];
 			
@@ -345,9 +338,7 @@ public class HGUCoursePatternAnalyzer {
 		}
 		
 		Collections.sort(ratioResult);
-//		for(String n:ratioResult) {
-//			System.out.println(n);
-//		}
+
 		ratioResult.add(0, headerForRatioResult);
 
 		Utils.writeAFile(ratioResult, output);

@@ -25,7 +25,7 @@ public class Utils {
 		ArrayList<CSVRecord> lines = new ArrayList<CSVRecord>();
 		
 		try {
-			//System.out.println(file);
+			
 			File readFile = new File(file);
 
 			if (!readFile.exists())
@@ -38,10 +38,8 @@ public class Utils {
 			
 			while(itr.hasNext()) {
 				
-				//String a = itr.next().get(0) + "," + itr.next().get(1) + "," + itr.next().get(2) + "," + itr.next().get(3) + "," + itr.next().get(4) + "," + itr.next().get(5) + "," + itr.next().get(6) + "," + itr.next().get(7) + "," + itr.next().get(8);
 				lines.add(itr.next());
-				//lines.add(convert);
-				//System.out.println(convert);
+
 			}
 			
 			reader.close();
@@ -54,11 +52,6 @@ public class Utils {
 			e.printStackTrace();
 		}
 
-		
-//		Reader reader = Files.newBufferedReader(Paths.get(file));
-//		CSVParser csv = CSVParser.parse(reader, CSVFormat.EXCEL.withIgnoreSurroundingSpaces().withTrim());
-//
-//		Iterator<CSVRecord> itr = csv.iterator();
 
 		if(removeHeader == true) {
 			lines.remove(0);
@@ -100,7 +93,7 @@ public class Utils {
 			FileOutputStream fos = new FileOutputStream(targetFileName);
 			OutputStreamWriter ops = new OutputStreamWriter(fos, "MS949");
 			BufferedWriter bw = new BufferedWriter(ops);
-			//BufferedWriter fw = new BufferedWriter(new FileWriter(resultFile, true));
+
 			for (String line : lines) {
 				bw.write(line);
 				// fw.newLine();
@@ -117,7 +110,6 @@ public class Utils {
 			System.exit(0);
 		}
 
-		System.out.println("Success");
 	}
 
 }
